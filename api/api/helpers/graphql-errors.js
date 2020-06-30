@@ -7,6 +7,14 @@ function GQLNotFoundByID(type, id) {
   );
 }
 
+function GQLNotFoundByName(type, name) {
+  return new ApolloError(
+    `${type} with name '${name}' cannot be fetched.`,
+    'CAN_NOT_FETCH_BY_NAME'
+  );
+}
+
 module.exports = {
   GQLNotFoundByID,
+  GQLNotFoundByName,
 };

@@ -17,7 +17,7 @@ const typeDefs = gql`
     LogementType(id: String!): LogementType
     Evenement(id: String!): Evenement
     Employe(id: String!): Employe
-    Role(id: String!): Role
+    Role(name: String!): Role
     Reservation(id: String!): Reservation
     EtatLieu(id: String!): EtatLieu
     Client(id: String!): Client
@@ -67,7 +67,7 @@ const typeDefs = gql`
   type Role {
     id: String!
     name: String!
-    permission: String!
+    permissions: [String]!
   }
 
   type Reservation {
