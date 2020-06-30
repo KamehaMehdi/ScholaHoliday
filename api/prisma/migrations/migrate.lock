@@ -1,3 +1,4 @@
 # Prisma Migrate lockfile v1
 
 20200629234554-init_db
+20200630120512-add-timestamp-to-tables
