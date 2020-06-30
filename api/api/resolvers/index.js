@@ -1,3 +1,5 @@
+const GQLScalars = require('graphql-scalars');
+
 const Logements = require('./Logements');
 const LogementType = require('./LogementType');
 const Role = require('./Role');
@@ -24,4 +26,7 @@ module.exports = {
     EtatLieu: (_parent, args) => '',
     Client: (_parent, args) => '',
   },
+
+  // Custom Scalars
+  DateTime: GQLScalars.DateTimeResolver,
 };
