@@ -21,8 +21,16 @@ function GQLRelationNotExists(type, value, is_id = true) {
   );
 }
 
+function GQLAlreadyUsed(name, value) {
+  return new ApolloError(
+    `${name} '${value}' is already used.`,
+    'VALIDATION_VALUE_ALREADY_USED'
+  );
+}
+
 module.exports = {
   GQLNotFoundByID,
   GQLNotFoundByName,
   GQLRelationNotExists,
+  GQLAlreadyUsed,
 };
