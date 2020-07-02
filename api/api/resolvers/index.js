@@ -1,13 +1,13 @@
 const GQLScalars = require('graphql-scalars');
 
-const Logements = require('./Logements');
+const Logement = require('./Logements');
 const LogementType = require('./LogementType');
 const Role = require('./Role');
 
 module.exports = {
   Query: {
     // Collections
-    Logements: () => Logements.Logements(),
+    Logements: () => Logement.LogementCollection(),
     LogementTypes: () => LogementType.LogementTypeCollection(),
     Evenements: () => '',
     Employes: () => '',
@@ -17,7 +17,7 @@ module.exports = {
     Clients: () => '',
 
     //Simple queries
-    Logement: (_parent, args) => '',
+    Logement: (_parent, args) => Logement.getLogement(args),
     LogementType: (_parent, args) => LogementType.getLogementType(args),
     Evenement: (_parent, args) => '',
     Employe: (_parent, args) => '',
@@ -25,6 +25,13 @@ module.exports = {
     Reservation: (_parent, args) => '',
     EtatLieu: (_parent, args) => '',
     Client: (_parent, args) => '',
+  },
+
+  // Mutations
+  Mutation: {
+    setLogement: (_parent, args) => Logement.setLogement(args),
+    updateLogement: (_parent, args) => Logement.updateLogement(args),
+    deleteLogement: (_parent, args) => Logement.deleteLogement(args),
   },
 
   // Custom Scalars

@@ -26,14 +26,17 @@ const typeDefs = gql`
     Client(id: String!): Client
   }
 
-  #   type Mutation {
-  #     addClient(
-  #       name: String!
-  #       phone_number: String!
-  #       email: String!
-  #       address: String
-  #     ): Client
-  #   }
+  type Mutation {
+    setLogement(
+      name: String!
+      description: String!
+      LogementType: String!
+      number: Int!
+      in_maintenance: Boolean = false
+    ): Logement
+    updateLogement(id: String!, input: LogementInput): Logement
+    deleteLogement(id: String!): AffectedRows
+  }
 
   type Logement {
     id: String!
@@ -108,6 +111,19 @@ const typeDefs = gql`
     banned: Boolean
     created_at: DateTime!
     deleted_at: DateTime
+  }
+
+  type AffectedRows {
+    affected_rows: Int!
+  }
+
+  # Inputs
+  input LogementInput {
+    name: String
+    description: String
+    LogementType: String
+    number: Int
+    in_maintenance: Boolean
   }
 `;
 

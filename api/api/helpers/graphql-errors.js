@@ -14,7 +14,15 @@ function GQLNotFoundByName(type, name) {
   );
 }
 
+function GQLRelationNotExists(type, value, is_id = true) {
+  return new ApolloError(
+    `'${type}' with ${is_id ? 'ID' : 'name'} '${value} not exists.`,
+    'RELATION_NOT_EXISTS'
+  );
+}
+
 module.exports = {
   GQLNotFoundByID,
   GQLNotFoundByName,
+  GQLRelationNotExists,
 };
