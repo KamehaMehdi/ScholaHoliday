@@ -43,7 +43,6 @@ export const Dashboard = () => {
     <div className={style({
       display: 'flex',
       flexDirection: 'column',
-      marginTop: 200,
       width: '80%'
     })}>
       <div className={CardRow}>
