@@ -43,9 +43,7 @@ export default function SimpleTable() {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
+              <TableCell component="th" scope="row"> {row.name}</TableCell>
               <TableCell align="right">{row.address}</TableCell>
               <TableCell align="right">{row.phone_number}</TableCell>
               <TableCell align="right">{row.email}</TableCell>
