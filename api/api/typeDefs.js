@@ -36,6 +36,16 @@ const typeDefs = gql`
     ): Logement
     updateLogement(id: String!, input: LogementInput): Logement
     deleteLogement(id: String!): AffectedRows
+
+    setClient(
+      name: String!
+      address: String!
+      phone_number: String!
+      email: String!
+      banned: Boolean = false
+    ): Client
+    updateClient(id: String!, input: ClientInput): Client
+    deleteClient(id: String!): AffectedRows
   }
 
   type Logement {
@@ -124,6 +134,14 @@ const typeDefs = gql`
     LogementType: String
     number: Int
     in_maintenance: Boolean
+  }
+
+  input ClientInput {
+    name: String
+    address: String
+    phone_number: String
+    email: String
+    banned: Boolean
   }
 `;
 
