@@ -6,8 +6,6 @@ function createContext() {
   return { prisma };
 }
 
-
-
 module.exports = {
   createContext,
 };

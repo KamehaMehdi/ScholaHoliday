@@ -1,6 +1,9 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  # Custom scalars
+  scalar DateTime
+
   type Query {
     # Collections
     Logements: [Logement]
@@ -17,7 +20,7 @@ const typeDefs = gql`
     LogementType(id: String!): LogementType
     Evenement(id: String!): Evenement
     Employe(id: String!): Employe
-    Role(id: String!): Role
+    Role(name: String!): Role
     Reservation(id: String!): Reservation
     EtatLieu(id: String!): EtatLieu
     Client(id: String!): Client
@@ -39,6 +42,8 @@ const typeDefs = gql`
     location: String!
     default_price: Int!
     in_maintenance: Boolean
+    created_at: DateTime!
+    deleted_at: DateTime
   }
 
   type LogementType {
@@ -51,7 +56,8 @@ const typeDefs = gql`
     Logement: Logement!
     Employe: Employe!
     tache: String!
-    created_at: String!
+    created_at: DateTime!
+    deleted_at: DateTime
   }
 
   type Employe {
@@ -61,13 +67,13 @@ const typeDefs = gql`
     username: String!
     email: String!
     disabled: Boolean!
-    created_at: String!
+    created_at: DateTime!
   }
 
   type Role {
     id: String!
     name: String!
-    permission: String!
+    permissions: [String]!
   }
 
   type Reservation {
@@ -75,10 +81,12 @@ const typeDefs = gql`
     Client: Client!
     Logement: Logement!
     price: Int!
-    start_date: String!
-    end_date: String!
-    check_in: String
-    check_out: String
+    start_date: DateTime!
+    end_date: DateTime!
+    check_in: DateTime
+    check_out: DateTime
+    created_at: DateTime!
+    deleted_at: DateTime
   }
 
   type EtatLieu {
@@ -87,7 +95,7 @@ const typeDefs = gql`
     Logement: Logement!
     Employe: Employe!
     report: String!
-    created_at: String!
+    created_at: DateTime!
   }
 
   type Client {
@@ -97,7 +105,8 @@ const typeDefs = gql`
     phone_number: String
     email: String!
     banned: Boolean
-    created_at: String!
+    created_at: DateTime!
+    deleted_at: DateTime
   }
 `;
 
