@@ -38,9 +38,9 @@ const typeDefs = gql`
   type Logement {
     id: String!
     name: String!
-    Logement: Logement!
-    location: String!
-    default_price: Int!
+    description: String!
+    LogementType: LogementType!
+    number: Int!
     in_maintenance: Boolean
     created_at: DateTime!
     deleted_at: DateTime
@@ -49,6 +49,7 @@ const typeDefs = gql`
   type LogementType {
     id: String!
     name: String!
+    price: Int!
   }
 
   type Evenement {
