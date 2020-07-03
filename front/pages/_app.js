@@ -80,7 +80,7 @@ export default function MyApp(props) {
           })}
         </List>
       </Drawer>
-      <AppBar>
+      <AppBar position="static">
         <Toolbar>
           <IconButton onClick={openDrawer} edge="start" color="inherit">
             <MenuIcon/>
