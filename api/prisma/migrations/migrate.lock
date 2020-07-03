@@ -1,0 +1,5 @@
+# Prisma Migrate lockfile v1
+
+20200629234554-init_db
+20200630120512-add-timestamp-to-tables
+20200702112124-20200702110402-add-fields-and-reservation-logement

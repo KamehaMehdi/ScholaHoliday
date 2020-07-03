@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Logement {
+  id String @id @default(cuid())
+  name String @unique
+  type String
+  LogementType Logement @relation(fields: [type])
+  location String
+  default_price Int
+  in_maintenance Boolean @default(false)
+  created_at DateTime @default(now())
+  deleted_at DateTime?
+}
+
+model LogementType {
+  id String @id @default(cuid())
+  name String @unique
+}
+
+model Evenement {
+  id String @id @default(cuid())
+  logement String
+  Logement Logement @relation(fields: [logement])
+  employe String
+  Employe Employe @relation(fields: [employe])
+  tache String
+  created_at DateTime @default(now())
+}
+
+model Employe {
+  id String @id @default(cuid())
+  name String
+  role String
+  Role Role @relation(fields: [role])
+  username String @unique
+  password String
+  email String
+  disabled Boolean @default(false)
+  created_at DateTime @default(now())
+  deleted_at DateTime?
+}
+
+model Role {
+  id String @id @default(cuid())
+  name String
+  permission String
+}
+
+model Reservation {
+  id String @id @default(cuid())
+  client String
+  Client Client @relation(fields: [client])
+  logement String
+  Logement Logement @relation(fields: [logement])
+  price Int
+  start_date DateTime
+  end_date DateTime
+  check_in DateTime?
+  check_out DateTime?
+  created_at DateTime @default(now())
+  deleted_at DateTime?
+}
+
+model EtatLieu {
+  id String @id @default(cuid())
+  reservation String
+  logement String
+  employe String
+  Reservation Reservation @relation(fields: [reservation])
+  Logement Logement @relation(fields: [logement])
+  Employe Employe @relation(fields: [employe])
+  report String
+  created_at DateTime @default(now())
+}
+
+model Client {
+  id String @id @default(cuid())
+  name String @unique
+  address String
+  phone_number String
+  email String @unique
+  banned Boolean @default(false)
+  created_at DateTime @default(now())
+  deleted_at DateTime?
+}

@@ -1,0 +1,28 @@
+{
+  "name": "ScholaHoliday-api",
+  "version": "1.0.0",
+  "main": "api/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node api/",
+    "dev": "./node_modules/.bin/nodemon",
+    "dev:prod": "NODE_ENV=production ./node_modules/.bin/nodemon",
+    "prettier:check": "./node_modules/.bin/prettier --check '**/*.js'",
+    "prettier:write": "./node_modules/.bin/prettier --write '**/*.js'"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.15.0",
+    "express": "^4.17.1",
+    "google-libphonenumber": "^3.2.10",
+    "graphql-scalars": "^1.2.1",
+    "validator": "^13.1.1"
+  },
+  "devDependencies": {
+
+    "@prisma/cli": "^2.1.3",
+    "faker": "^4.1.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5"
+
+  }
+}
