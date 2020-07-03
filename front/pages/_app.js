@@ -71,7 +71,7 @@ export default function MyApp(props) {
         <List>
           {pagesList.map(({name, url, Icon}) => {
             return (
-                <Link href={url}>
+                <Link key={'page-' + name} href={url}>
                   <ListItem button>
                   <Icon className={style({marginRight: '20px'})} />{name}
                   </ListItem>
