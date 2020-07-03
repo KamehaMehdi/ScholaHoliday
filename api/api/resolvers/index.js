@@ -4,6 +4,7 @@ const Client = require('./Client');
 const Logement = require('./Logements');
 const LogementType = require('./LogementType');
 const Role = require('./Role');
+const Resevation = require('./Reservations');
 
 module.exports = {
   Query: {
@@ -13,7 +14,7 @@ module.exports = {
     Evenements: () => '',
     Employes: () => '',
     Roles: () => Role.RoleCollection(),
-    Reservations: () => '',
+    Reservations: () => Reservation.reservationCollection(),
     EtatsLieux: () => '',
     Clients: () => Client.clientCollection(),
 
@@ -23,7 +24,7 @@ module.exports = {
     Evenement: (_parent, args) => '',
     Employe: (_parent, args) => '',
     Role: (_parent, args) => Role.getRoleByName(args),
-    Reservation: (_parent, args) => '',
+    Reservation: (_parent, args) => Reservation.getReservation(args),
     EtatLieu: (_parent, args) => '',
     Client: (_parent, args) => Client.getClient(args),
   },
@@ -36,6 +37,11 @@ module.exports = {
     setClient: (_parent, args) => Client.setClient(args),
     updateClient: (_parent, args) => Client.updateClient(args),
     deleteClient: (_parent, args) => Client.deleteClient(args),
+    setReservation: (_parent, args) => Resevation.setReservation(args),
+    updateReservation:(_parent, args) => Resevation.updateReservation(args),
+    deleteReservation: (_parent, args) => Resevation.deleteReservation(args),
+    setReservationCheckIn: (_parent, args) => Resevation.setReservationCheckIn(args),
+    setReservationCheckOut: (_parent, args) => Resevation.setReservationCheckOut(args),
   },
 
   // Custom Scalars
