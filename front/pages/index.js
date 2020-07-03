@@ -13,7 +13,7 @@ export default () => {
 
   return (
     <ApolloProvider client={client}>
-      <div style={{display:'flex', justifyContent:'center', marginTop: 200}}>
+      <div style={{display:'flex', justifyContent:'center', marginTop: 100}}>
         <Dashboard/>
       </div>
     </ApolloProvider>

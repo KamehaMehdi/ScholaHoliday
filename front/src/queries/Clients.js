@@ -33,14 +33,17 @@ export const Clients = {
     ) ${clientParameters}
   }
   `),
-  updateOne: (id, input) => useMutation(gq`
-  mutation {
-    updateClient(id: ${id}, input: ${input}) ${clientParameters}
-  }
-  `),
+  updateOne: (id, queryToSend) => {
+
+    return useMutation(gq`
+      mutation {
+        updateClient(id: "${id}", input: {${queryToSend}}) ${clientParameters}
+      }
+      `)
+    },
   deleteOne: (id) => useMutation(gq`
   mutation {
-    deleteClient(id: ${id}) {
+    deleteClient(id: "${id}") {
       affected_rows
     }
   }
