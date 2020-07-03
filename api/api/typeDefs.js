@@ -46,6 +46,11 @@ const typeDefs = gql`
     ): Client
     updateClient(id: String!, input: ClientInput): Client
     deleteClient(id: String!): AffectedRows
+    setReservation(input: ReservationInput): Reservation
+    updateReservation(id: String!, input: ReservationInput): Reservation
+    deleteReservation(id: String!): AffectedRows
+    setReservationCheckIn(id: String!, check_in: String!):AffectedRows
+    setReservationCheckOut(id: String!, check_out: String!): AffectedRows
   }
 
   type Logement {
@@ -93,7 +98,7 @@ const typeDefs = gql`
   type Reservation {
     id: String!
     Client: Client!
-    Logement: Logement!
+    Logement: [Logement]!
     price: Int!
     start_date: DateTime!
     end_date: DateTime!
@@ -142,6 +147,14 @@ const typeDefs = gql`
     phone_number: String
     email: String
     banned: Boolean
+  }
+
+  input ReservationInput{
+    Client: String
+    Logement: [String]
+    price: Int
+    start_date: DateTime
+    end_date: DateTime
   }
 `;
 
